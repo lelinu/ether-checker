@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  ether-checker:
+    container_name: 'ether-checker'
+    image: lelinu/ether-checker:1.0
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - MIN_USD_VALUE=20.0
+      - AWS_TOPIC_ARN=
+      - ETH_SCAN_API_KEY=
+      - ETH_ADDRESS=
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "5"
